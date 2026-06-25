@@ -1,0 +1,52 @@
+@baseUrl = http://localhost:3000
+
+### 
+
+GET  {{baseUrl}}/
+
+
+
+###
+
+GET {{baseUrl}}/api/users
+
+###
+
+GET {{baseUrl}}/api/users/6a24341fe29f7d330a2d10ee
+
+###
+
+POST {{baseUrl}}/api/users
+Content-Type: application/json
+
+{
+    "name": "idan nadler",
+    "email": "nadler@gmail.com",
+    "age": 24,
+    "hobbies": "Reading, Hiking, traveling, developing",
+    "pets": "parrot"
+}
+
+
+
+###
+
+
+POST {{baseUrl}}/api/users
+Content-Type: application/json
+
+{
+    "name": "Gabi abutbul",
+    "email": "abutbul@gmail.com",
+    "age": 52,
+    "hobbies": "Reading, Hiking, Cooking",
+    "pets": "dog, cat"
+}
+
+
+
+###
+
+
+
+DELETE {{baseUrl}}/api/users/6a2580bd3afe102ba53e572b

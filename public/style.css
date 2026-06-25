@@ -1,0 +1,77 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #1df41d;
+    margin: 10px;
+    padding: 10px;
+}
+h1 {
+    color: #060303;
+    text-align: center;
+}
+header {
+    background-color: #1df41d;
+    color: rgb(7, 0, 0);
+    padding: 10px 0;
+    text-align: center;
+    margin-bottom: 20px;
+}
+head {
+    background-color: #1df41d;
+    text-align: center;
+}
+form {
+    background-color:#1df41d;
+    padding: 20px;
+    border-radius: 5px;
+}
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+input[type="text"],
+input[type="email"], input[type="password"], input[type="number"], select {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+button {
+    background-color: #1c0ee4;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+button:hover {
+    background-color: #1df41d;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+table, th, td {
+    border: 1px solid #0ef50e;
+}
+th, td {
+    padding: 8px;
+    text-align: left;
+}
+th {
+    background-color: #f2f2f2;
+}
+.container.header {
+    flex-direction: column;
+    align-items: center;
+}
+.stat-card {
+    background-color: #1df41d;
+    padding: 20px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+
