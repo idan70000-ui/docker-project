@@ -17,7 +17,7 @@ connectDB();
 
 
 app.get('/', (req, res) => {
-    res.send( ' Hello, World! 🌏 and welcome to my project :)' );
+    res.send( ' Hello, World! 🌏 my name is Idan Nadler and welcome to my project :)' );
 });
 
 app.use("/api/users", userRoutes);
