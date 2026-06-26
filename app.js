@@ -17,7 +17,7 @@ connectDB();
 
 
 app.get('/', (req, res) => {
-    res.send( ' Hello, World! 🌏 and welcome to my project :) ' );
+    res.send( ' Hello, World! 🌏 and welcome to my project :) (test)' );
 });
 
 app.use("/api/users", userRoutes);
