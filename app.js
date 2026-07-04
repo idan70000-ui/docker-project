@@ -10,14 +10,19 @@ const app = express();
 app.use(cors({
     origin: 'http://127.0.0.1:5500'
 }));
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
+const allowedOrigins = [
+     'http://127.0.0.1:5500',
+     'http://localhost:3000',
+    process.env.RENDER_EXTERNAL_URL
+]
 const userRoutes = require('./routes/users.js');
 app.use(express.json());
 connectDB(); 
 
 
 app.get('/', (req, res) => {
-    res.send( ' Hello, World! 🌏 my name is Idan Nadler and welcome to my project :) :)' );
+    res.send( ' Hello, World! 🌏 my name is Idan Nadler and welcome to my project :) ' );
 });
 
 app.use("/api/users", userRoutes);
