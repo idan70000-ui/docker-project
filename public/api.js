@@ -1,4 +1,4 @@
-const API_URL = 'http://localhost:3000/api/users';
+const API_URL = "/api/users";
 
 const totalUsers = document.getElementById('totalUsers');
 const aveAge = document.getElementById('aveAge');
