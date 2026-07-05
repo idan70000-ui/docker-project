@@ -11,4 +11,5 @@ ENV NODE_ENV=production
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 EXPOSE 3000
+# Run the application
 CMD [ "node", "app.js" ]
