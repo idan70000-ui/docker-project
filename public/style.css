@@ -74,8 +74,6 @@ th {
     text-align: center;
 }
 div.container {
-    display: flex;
-    justify-content: space-between;
     margin-bottom: 20px;
     background-color: #1da2f4;
 }
