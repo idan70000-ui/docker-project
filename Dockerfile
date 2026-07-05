@@ -14,4 +14,4 @@ COPY . .
 # Inform docker that the application use port 3000
 EXPOSE 3000
 # Execute this command when the container runs
-CMD [ "node", "index.js" ]
+CMD [ "node", "app.js" ]
