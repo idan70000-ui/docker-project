@@ -34,9 +34,7 @@ if(!process.env.JWD_SECRET) {
 }
 
 
-app.get('/', (req, res) => {
-    res.send( ' Hello, World! 🌏 my name is Idan Nadler and welcome to my project :) ' );
-});
+
 app.get('/health', (req, res) => {
     const dbstatus = ['disconnected', 'connecting', 'connected', 'disconnecting'];
     const dbconnected = mongoose.connection.readyState === 1;
