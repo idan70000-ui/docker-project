@@ -1,6 +1,6 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #1df41d;
+    background-color: #1da2f4;
     margin: 10px;
     padding: 10px;
 }
@@ -46,7 +46,7 @@ button {
     cursor: pointer;
 }
 button:hover {
-    background-color: #1df41d;
+    background-color: #1da2f4;
 }
 table {
     width: 100%;
@@ -68,7 +68,7 @@ th {
     align-items: center;
 }
 .stat-card {
-    background-color: #1df41d;
+    background-color: #1da2f4;
     padding: 20px;
     border-radius: 5px;
     text-align: center;
