@@ -18,3 +18,4 @@ Alpine-
 היא גרסה קלה במיוחד של מערכת ההפעלה Linux, המשמשת כבסיס ל־דוקר images
 
 
+RUN npm ci --omit=dev && npm cache clean --force - ניקוי 
