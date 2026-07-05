@@ -7,6 +7,10 @@ WORKDIR /app
 # copy package.json and package-lock.json first to take advantage of docker layer
 COPY package*.json ./
 
+ENV NODE_ENV=production
+RUN npm ci --omit=dev
+
+
 # install all dependecies defined in package.json
 RUN npm install
 
