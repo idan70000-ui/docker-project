@@ -1,14 +1,20 @@
-FROM node:20-alpine AS deps
-WORKDIR /app
-ENV NODE_ENV=production
+# --- Stage 1: Base Image ---
+# משתמשים בגרסת alpine הרזה כבסיס משותף
+FROM node:20alpine AS base
+WORKDIR /usr/src/app
 COPY package*.json ./
-RUN npm ci --omit=dev && npm cache clean --force
 
-
-FROM node:20-alpine AS production
-WORKDIR /app
-ENV NODE_ENV=production
-COPY --from=deps /app/node_modules ./node_modules
+# --- Stage 2: Development (לסביבת פיתוח) ---
+FROM base AS development
+# מתקין את כל החבילות כולל devDependencies (כלומר nodemon)
+RUN npm install
 COPY . .
-EXPOSE 3000
-CMD [ "node", "app.js" ]
+CMD ["npm", "run", "dev"]
+
+# --- Stage 3: Production (לסביבת ייצור) ---
+FROM base AS production
+# מתקין חבילות פרודקשן בלבד (מתעלם מ-nodemon)
+RUN npm install --only=production
+COPY . .
+# הרצה נקייה ישירות עם Node
+CMD ["npm", "start"]
