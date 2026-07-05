@@ -9,7 +9,7 @@ COPY package*.json ./
 
 ENV NODE_ENV=production
 RUN npm ci --omit=dev
-
+RUN npm audit --omit=dev
 
 # install all dependecies defined in package.json
 RUN npm install
