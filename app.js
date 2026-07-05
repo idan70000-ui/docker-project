@@ -28,11 +28,10 @@ const userRoutes = require('./routes/users.js');
 app.use(express.json());
 connectDB(); 
 
-if(!process.env.JWD_SECRET) {
-   console.error('JWD_SECRET is not defined in the environment variables. Please set it in your .env file.');
+if(!process.env.JWT_SECRET) {
+   console.error('JWT_SECRET is not defined in the environment variables. Please set it in your .env file.');
    process.exit(1); 
 }
-
 
 
 app.get('/health', (req, res) => {
