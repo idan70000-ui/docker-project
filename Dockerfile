@@ -1,24 +1,17 @@
-#this commend starts from image that already node.js installd in version 20;
-FROM node:20-alpine
-
-#sets /app as the working directory inside the container
+# this is the config fille we want to set to our image - INSTANCE packge.json
+# The model/version we want to run our program
+FROM node:20-alpine AS deps
+# means the directort we want to run our cotainer from /index
 WORKDIR /app
-
-# copy package.json and package-lock.json first to take advantage of docker layer
+# means evety thing that the name starts with package will copy it to the image
 COPY package*.json ./
-
-ENV NODE_ENV=production
-RUN npm ci --omit=dev
-RUN npm audit --omit=dev
-
-# install all dependecies defined in package.json
+# install all dependecies in package.json
 RUN npm install
-
-# copy the entier project into the container
+FROM node:20-alpine AS production
+COPY --from=deps /app/node_modules ./node_modules
+# copy the intire porject into the container 
 COPY . .
-
-# inform docker that the application uses port 3000
+# Inform docker that the application use port 3000
 EXPOSE 3000
-
-# execute this command whan the container starts
-CMD [ "node", "app.js" ]
+# Execute this command when the container runs
+CMD [ "node", "index.js" ]
