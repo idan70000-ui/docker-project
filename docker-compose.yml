@@ -1,6 +1,12 @@
 services:
   app:
     build: .
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 30s
     ports:
       - "5000:3000"
     environment:
@@ -9,13 +15,21 @@ services:
       DB_NAME: ${DB_NAME}
       JWT_SECRET: ${JWT_SECRET}
     depends_on:
-      - mongo
+      mongo:
+        condition: service_healthy
+
   mongo:
-      image: mongo:7
-      ports:
-        - "27017:27017"
-      volumes:
-        - mongo-data:/data/db
-        
+    image: mongo:7
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+    healthcheck:
+      test: ["CMD", "mongosh", "--eval", "db.adminCommand('ping')"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 30s
+
 volumes:
-   mongo-data:
+  mongo-data:
