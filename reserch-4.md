@@ -56,6 +56,7 @@ services:
 
 
   4) development: (docker-compose.override.yml)
+  פקודת הרצה:  docker compose -f docker-compose.yml up --build
   services:
   app:
     build:
@@ -72,6 +73,8 @@ services:
         
         
         prodaction: (docker-compose.yml)
+        פקודת הרצה: docker compose up --build
+
         app:
     build:
       context: .
