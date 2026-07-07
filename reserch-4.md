@@ -1,3 +1,22 @@
+
+1) docker-compose.yml הוא קובץ הבסיס.
+
+docker-compose.override.yml הוא קובץ שמוסיף או מחליף הגדרות מהקובץ הבסיסי.
+
+כאשר מריצים:
+
+docker compose up
+
+ממזג אותם אוטומטית,docker-compose
+אם אותה הגדרה מופיעה בשני הקבצים, הערך שב־docker-compose.override.yml ינצח.
+
+
+
+
+
+
+
+
 2 - DEV) בקובץ הדוקר-פייל פיצלתי את הנתונים שם לשלושה חלקים:
 prodacsion,development,deps
 בסביבת פיתוח הגדרתי לו nodemod על מנת שיוכל להפעיל מחדש את האפליקצייה בכל פעם שהוא מזהה שינוי.
