@@ -57,7 +57,7 @@ services:
 
   4) development: (docker-compose.override.yml)
   פקודת הרצה:  docker compose -f docker-compose.yml up --build
-  
+
   services:
   app:
     build:
@@ -99,3 +99,5 @@ services:
     depends_on:
       mongo:
         condition: service_healthy
+
+        * הקובץ docker-compose.override.yml הוא לא קובץ עצמאי. הוא קובץ שמטרתו להוסיף או לשנות הגדרות מהקובץ docker-compose.yml.
