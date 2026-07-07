@@ -16,3 +16,62 @@ prodacsion,development,deps
   - .:/app
   ולכן הקונטיינר נוצר מחדש מתוך האימג ולכן התהליך דורש לבצע בילד לאימג מחדש בכל פעם שאנחנו מבצעים עדכון בקוד שלנו וגם הקונטיינר נוצר מחדש ואנחנו למעשה ברגע שאימג שלנו התעדכן גם הקונטיינר עצמו נוצר מחדש ומתעדכן.
   (פירוט של הדברים נמצא בקובץ הdocker-compose ובdockerfile)
+
+
+
+
+
+
+
+  4) development: 
+  app:
+    build:
+      context: .
+      target: development
+    command: npx nodemon app.js
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 30s
+    ports:
+      - "5000:3000"
+    volumes:
+      - .:/app
+      - /app/node_modules
+    environment:
+      NODE_ENV: development
+      DB_USER: ${DB_USER}
+      DB_PASSWORD: ${DB_PASSWORD}
+      DB_NAME: ${DB_NAME}
+      JWT_SECRET: ${JWT_SECRET}
+    depends_on:
+      mongo:
+        condition: service_healthy
+
+
+        prodaction:
+        app:
+    build:
+      context: .
+      target: prodaction
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 30s
+    ports:
+      - "5000:3000"
+    volumes:
+      - /app/node_modules
+    environment:
+      NODE_ENV: prodaction
+      DB_USER: ${DB_USER}
+      DB_PASSWORD: ${DB_PASSWORD}
+      DB_NAME: ${DB_NAME}
+      JWT_SECRET: ${JWT_SECRET}
+    depends_on:
+      mongo:
+        condition: service_healthy
