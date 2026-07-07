@@ -38,4 +38,4 @@ HTTPS: ה־Reverse Proxy מטפל בתעודת ה־SSL ובחיבור המאוב
 
 
 
-2) 
+2) בוצע בקוד (קובץ docker-compose-yml)
