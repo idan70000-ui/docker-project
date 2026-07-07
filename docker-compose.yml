@@ -1,6 +1,9 @@
 services:
   app:
-    build: .
+    build:
+      context: .
+      target: development
+    command: npx nodemon app.js
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:3000/health"]
       interval: 30s
@@ -9,7 +12,11 @@ services:
       start_period: 30s
     ports:
       - "5000:3000"
+    volumes:
+      - .:/app
+      - /app/node_modules
     environment:
+      NODE_ENV: development
       DB_USER: ${DB_USER}
       DB_PASSWORD: ${DB_PASSWORD}
       DB_NAME: ${DB_NAME}
