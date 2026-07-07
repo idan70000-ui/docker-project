@@ -10,6 +10,28 @@ prodacsion,development,deps
 services:
   app:
     build:
+      target: development
+    command: npx nodemon app.js
+    volumes:
+      - .:/app
+      - /app/node_modules
+    environment:
+      NODE_ENV: development
+
+
+
+
+
+
+
+3 - PROD) בשלב הפרודקשן לא משתמשים בvolumes:
+  - .:/app
+  ולכן הקונטיינר נוצר מחדש מתוך האימג ולכן התהליך דורש לבצע בילד לאימג מחדש בכל פעם שאנחנו מבצעים עדכון בקוד שלנו וגם הקונטיינר נוצר מחדש ואנחנו למעשה ברגע שאימג שלנו התעדכן גם הקונטיינר עצמו נוצר מחדש ומתעדכן.
+  (פירוט של הדברים נמצא בקובץ הdocker-compose ובdockerfile)
+
+services:
+  app:
+    build:
       context: .
       target: production
     healthcheck:
@@ -29,29 +51,6 @@ services:
     depends_on:
       mongo:
         condition: service_healthy
-
-
-
-
-
-
-
-3 - PROD) בשלב הפרודקשן לא משתמשים בvolumes:
-  - .:/app
-  ולכן הקונטיינר נוצר מחדש מתוך האימג ולכן התהליך דורש לבצע בילד לאימג מחדש בכל פעם שאנחנו מבצעים עדכון בקוד שלנו וגם הקונטיינר נוצר מחדש ואנחנו למעשה ברגע שאימג שלנו התעדכן גם הקונטיינר עצמו נוצר מחדש ומתעדכן.
-  (פירוט של הדברים נמצא בקובץ הdocker-compose ובdockerfile)
-
-services:
-  app:
-    build:
-      target: development
-    command: npx nodemon app.js
-    volumes:
-      - .:/app
-      - /app/node_modules
-    environment:
-      NODE_ENV: development
-
 
 
 
