@@ -1,0 +1,10 @@
+services:
+  app:
+    build:
+      target: development
+    command: npx nodemon app.js
+    volumes:
+      - .:/app
+      - /app/node_modules
+    environment:
+      NODE_ENV: development
