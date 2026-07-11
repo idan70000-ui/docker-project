@@ -1,4 +1,18 @@
-1) logs:
+1+2) healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 30s
+    expose:
+      - "3000"
+
+
+      הערה: נמצא בקובץ docker-compose-yml!
+
+
+
+3) logs:
 docker compose up --build 
 time="2026-07-05T22:07:03+03:00" level=warning msg="The \"A1bC9dEfGh\" variable is not set. Defaulting to a blank string."
 time="2026-07-05T22:07:03+03:00" level=warning msg="The \"A1bC9dEfGh\" variable is not set. Defaulting to a blank string."
@@ -62,6 +76,6 @@ app-1    | mongodb connected successfully!! 🎉🎉🎉🎉🎉
 
 
 תשובה לשאלת מחקר:
-2)רץ" = התהליך חי. "מוכן" = האפליקציה סיימה ויכולה לענות נכון לבקשות "
+)רץ" = התהליך חי. "מוכן" = האפליקציה סיימה ויכולה לענות נכון לבקשות "
 קריטי כי: אם מפנים תנועה לפי "רץ" בלבד, משתמשים מקבלים שגיאות בזמן שהשירות עוד לא באמת מוכן
 וזה אומר שברגע זה רץ אז האפליקציה או השרת שלי לאו דווקא עובדים כמו שצריך וכשמצויין שזה בready אז זה מציין שהאפליקציה מוכנה ושאפשר לעבוד בפרודקשן ובכל סביבה אחרת כמו שצריך.
